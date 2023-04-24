@@ -1,3 +1,6 @@
 from .main import create_app
+from .customers import app as customers_app
 
-BLUEPRINTS = []
+BLUEPRINTS = [
+    customers_app,
+]
