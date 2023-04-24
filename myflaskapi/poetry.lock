@@ -68,6 +68,22 @@ async = ["asgiref (>=3.2)"]
 dotenv = ["python-dotenv"]
 
 [[package]]
+name = "flask-pydantic"
+version = "0.11.0"
+description = "Flask extension for integration with Pydantic library"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "Flask-Pydantic-0.11.0.tar.gz", hash = "sha256:eef679b24e34ffb02e24e1d998ac023007aa2b531927fdc2f9b8114a12c19bb4"},
+    {file = "Flask_Pydantic-0.11.0-py3-none-any.whl", hash = "sha256:c5a6283d1227631683ceb72a41f652036829476fbb6e7b6ccef8cae8ed51ebab"},
+]
+
+[package.dependencies]
+Flask = "*"
+pydantic = ">=1.7"
+
+[[package]]
 name = "importlib-metadata"
 version = "6.0.1"
 description = "Read metadata from Python packages"
@@ -465,4 +481,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "32df97e1419096ea9d4dd19441e7660c8208dbdd9ef7f9702cd435a8ca2fb9d8"
+content-hash = "6d78b17cf43d242fed33eac57249c504d0209fc48f7a02f68e58d6fde89e0384"
