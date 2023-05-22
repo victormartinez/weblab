@@ -1,6 +1,6 @@
 PROJECT_NAME = myflaskapi
 TEST_FOLDER = tests
-APPLICATION = myflaskapi.api.main:app
+APPLICATION = customers.main:app
 
 .PHONY: default
 default: help

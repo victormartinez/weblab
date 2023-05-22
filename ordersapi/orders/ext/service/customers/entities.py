@@ -1,10 +1,9 @@
-from typing import List, Optional
 from uuid import UUID
 
 from pydantic import BaseModel
 
 
-class CustomerOut(BaseModel):
+class Customer(BaseModel):
     id: UUID
     name: str
     surname: str

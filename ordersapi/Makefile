@@ -1,6 +1,6 @@
-PROJECT_NAME = myfastapi
+PROJECT_NAME = orders
 TEST_FOLDER = tests
-APPLICATION = myfastapi.api.main:app
+APPLICATION = orders.main:app
 
 .PHONY: default
 default: help
@@ -21,5 +21,9 @@ clean:
 
 .PHONY: run
 run:
-	uvicorn $(APPLICATION) --reload
+	opentelemetry-instrument \
+		--traces_exporter console \
+		--metrics_exporter console \
+		--logs_exporter console \
+		uvicorn $(APPLICATION) --reload
 

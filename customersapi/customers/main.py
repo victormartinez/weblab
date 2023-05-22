@@ -2,7 +2,7 @@ from typing import Dict
 
 from flask import Flask, jsonify
 
-from .ext import configure_extensions
+from customers.ext.opentelemetry.config import configure_tracer, configure_metric
 
 
 def create_app(override_settings: Dict = None) -> Flask:
@@ -20,6 +20,11 @@ def minimal_app(override_settings: Dict = None) -> Flask:
     return app
 
 
+def configure_extensions(app: Flask) -> None:
+    configure_tracer()
+    configure_metric()
+
+
 def configure_app(app: Flask, override_settings: Dict = None) -> None:
     from settings import APP_CONFIG
 
@@ -30,17 +35,16 @@ def configure_app(app: Flask, override_settings: Dict = None) -> None:
 
 
 def configure_blueprints(app: Flask) -> None:
-    from . import BLUEPRINTS
+    from .api import resources
 
-    for blueprint in BLUEPRINTS:
-        app.register_blueprint(blueprint)
+    app.register_blueprint(resources.app)
 
 
 def configure_routes(app: Flask) -> None:
     app.add_url_rule(
         "/",
         view_func=lambda: jsonify(
-            application="myflaskapi",
+            application="Customers API",
             health=True,
         ),
     )
